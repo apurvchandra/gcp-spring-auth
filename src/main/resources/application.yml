@@ -4,21 +4,20 @@ spring:
       client:
         registration:
           google:
-            client-id: 387497671024-4lrvrbeli9jilaitithtd7jd13amhl34.apps.googleusercontent.com
-            client-secret: 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
+            client-id: {UPDATE_ME}
+            client-secret: {UPDATE_ME}
             #redirect-uri: "{baseUrl}/"
           azure-dev:
             provider: azure
-            client-id: f165cbae-8f2c-46cc-a153-59e164da2c29
-            client-secret: 1nd8Q~NaUoMx~c1wfU9g_z2rHOj4VC.jTG3RudBi
-            redirect-uri:  http://localhost:8080/login/oauth2/code/azure-dev
+            client-id: {UPDATE_ME}
+            client-secret: {UPDATE_ME}
             scope:
             - openid
             - email
             - profile
         provider:
           azure:
-            issuer-uri: https://login.microsoftonline.com/02df1ebd-43a2-47e1-88d6-28f4ad9c16b0/v2.0
+            issuer-uri: https://login.microsoftonline.com/{UPDATE_ME}/v2.0
             user-name-attribute: name
       resourceserver:
         jwt:
@@ -34,3 +33,6 @@ jwt:
     group-to-authorities:
       "80446653-104b-4cc0-9d5d-94b961add862": SUPPORT
       "5350795a-8754-423e-aa18-b7ffd4994ee1": WEB_ADMIN
+
+server:
+    forward-headers-strategy: FRAMEWORK
