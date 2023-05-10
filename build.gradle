@@ -2,30 +2,53 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'idea'
-    id 'org.springframework.boot' version '2.2.2.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id 'org.springframework.boot' version '2.7.11'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id 'com.google.cloud.tools.jib' version '3.3.1'
 }
+
+
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = '1.8'
+
+repositories {
+  mavenCentral()
+}
+
+ext {
+  set('springCloudAzureVersion', "4.7.0")
+  set('springCloudGcpVersion', "3.4.9")
+  set('springCloudVersion', "2021.0.7")
+}
 
 dependencies {
-    compile "com.google.cloud:libraries-bom:8.1.0"
-	implementation "com.google.cloud:google-cloud-bigquery:2.23.0"
-	implementation "com.google.oauth-client:google-oauth-client-java6:1.31.0"
-	implementation "com.google.oauth-client:google-oauth-client-jetty:1.31.0"
-    implementation 'org.springframework.boot:spring-boot-starter-security:2.2.2.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.2.2.RELEASE'
-    implementation 'org.springframework.security:spring-security-oauth2-client:5.2.1.RELEASE'
-    implementation 'org.springframework.security:spring-security-oauth2-jose:5.2.1.RELEASE'
-    implementation 'org.webjars:js-cookie:2.1.0'
-    implementation 'org.webjars:jquery:2.1.1'
-    implementation 'org.webjars:bootstrap:3.2.0'
-    implementation 'org.webjars:webjars-locator-core:0.41'
-    implementation 'org.springframework.boot:spring-boot-configuration-processor:2.2.2.RELEASE'    
+  implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+  implementation 'org.springframework.boot:spring-boot-starter-security'
+  implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'com.azure.spring:spring-cloud-azure-starter-active-directory'
+  implementation 'com.google.cloud:spring-cloud-gcp-starter'
+  implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+  implementation 'org.springframework.security:spring-security-oauth2-client'
+  implementation 'org.springframework.security:spring-security-oauth2-jose'
+  implementation 'org.springframework.security:spring-security-oauth2-resource-server'
+  implementation 'org.springframework.security:spring-security-oauth2-core'
+  implementation 'org.webjars:js-cookie:2.1.0'
+  implementation 'org.webjars:jquery:2.1.1'
+  implementation 'org.webjars:bootstrap:3.2.0'
+  implementation 'org.webjars:webjars-locator-core:0.41'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'org.springframework.security:spring-security-test'
+}
+
+dependencyManagement {
+  imports {
+    mavenBom "com.azure.spring:spring-cloud-azure-dependencies:${springCloudAzureVersion}"
+    mavenBom "com.google.cloud:spring-cloud-gcp-dependencies:${springCloudGcpVersion}"
+    mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+  }
 }
