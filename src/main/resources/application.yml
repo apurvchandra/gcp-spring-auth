@@ -3,10 +3,6 @@ spring:
     oauth2:
       client:
         registration:
-          google:
-            client-id: {UPDATE_ME}
-            client-secret: {UPDATE_ME}
-            #redirect-uri: "{baseUrl}/"
           azure-dev:
             provider: azure
             client-id: {UPDATE_ME}
@@ -19,14 +15,10 @@ spring:
           azure:
             issuer-uri: https://login.microsoftonline.com/{UPDATE_ME}/v2.0
             user-name-attribute: name
-      resourceserver:
-        jwt:
-          issuer-uri: https://accounts.google.com
-          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
 logging:
   level:
     root: INFO
-    #org.springframework.security: DEBUG
+    org.springframework.security: DEBUG
 
 jwt:
   authorization:
