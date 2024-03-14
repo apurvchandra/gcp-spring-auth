@@ -27,7 +27,7 @@ jobs:
       name: 'Authenticate to Google Cloud'
       uses: 'google-GitHub-actions/auth@v1'
       with:
-        create_credentials_file: true
+        token_format: 'access_token'
         workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
         service_account: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
         
@@ -36,10 +36,9 @@ jobs:
         gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
       continue-on-error: true
 
-    - name: Configure Docker to use GCR
-      run: echo ${{ secrets.GCP_AUTH_TOKEN }} | base64 -d | docker login -u _json_key --password-stdin https://gcr.io
-      env:
-        GCP_AUTH_TOKEN: ${{ secrets.GCP_AUTH_TOKEN }}
+    - name: Docker configuration
+      run: |-
+        echo ${{steps.auth.outputs.access_token}}  | docker login -u oauth2accesstoken --password-stdin https://gcr.io
 
     - name: Build and Push Docker Image to GCR
       run: |
