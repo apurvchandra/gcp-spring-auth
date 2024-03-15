@@ -1,6 +1,9 @@
 # Dockerize a Spring Boot application using Jib
 
-This is an example of how to easily build a Docker image for a Spring Boot application with Jib.
+This is an example of how to easily build a a Spring Boot application with AD authentication using OIDC auth code flow. It also uses Jib and workload identity federation approach to push the Docker image.
+
+- https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow
+- https://learn.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory
 
 **Build Info**
 ![Build Status](https://github.com/apurvchandra/gcp-spring-auth/actions/workflows/actions.yaml/badge.svg)
