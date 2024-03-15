@@ -2,6 +2,9 @@
 
 This is an example of how to easily build a Docker image for a Spring Boot application with Jib.
 
+**Build Info**
+![Build Status](https://github.com/apurvchandra/gcp-spring-auth/actions/workflows/actions.yaml/badge.svg)
+
 **Maven:**
 ```shell
 ./mvnw compile jib:build -Dimage=<your image, eg. gcr.io/my-project/spring-boot-jib>
@@ -29,3 +32,4 @@ curl localhost:8080
 ```
 
 \* If you are using Gradle, use `./gradlew jib --image=$IMAGE` instead of the `./mvnw` command
+
