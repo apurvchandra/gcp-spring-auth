@@ -5,15 +5,15 @@ spring:
         registration:
           azure-dev:
             provider: azure
-            client-id: {UPDATE_ME}
-            client-secret: {UPDATE_ME}
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
             scope:
             - openid
             - email
             - profile
         provider:
           azure:
-            issuer-uri: https://login.microsoftonline.com/{UPDATE_ME}/v2.0
+            issuer-uri: https://login.microsoftonline.com/${AZURE_TENANT_ID}/v2.0
             user-name-attribute: name
 logging:
   level:
