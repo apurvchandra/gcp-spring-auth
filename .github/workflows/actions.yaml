@@ -46,7 +46,7 @@ jobs:
         
     - name: Build and Push Docker Image to GCR
       run: |
-        ./gradlew jib --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/spring-auth:latest
+        ./gradlew jib --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/spring-auth:latest --region europe-west1
       env:
         GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
 
