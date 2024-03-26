@@ -46,13 +46,13 @@ jobs:
         
     - name: Build and Push Docker Image to GCR
       run: |
-        ./gradlew jib --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/spring-auth:latest --region europe-west1
+        ./gradlew jib --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/spring-auth:latest 
       env:
         GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
 
     - name: 'Deploy to GCP'
       run: |-
-        gcloud run deploy spring-auth --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/spring-auth:latest
+        gcloud run deploy spring-auth --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/spring-auth:latest --region europe-west1
       continue-on-error: true        
 
     - name: Install Trivy
