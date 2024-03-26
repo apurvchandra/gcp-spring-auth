@@ -18,7 +18,8 @@ spring:
 logging:
   level:
     root: INFO
-    org.springframework.security: DEBUG
+    org.springframework.security: INFO
+    org.springframework.web: DEBUG
 
 jwt:
   authorization:
